@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+    --background: #302930;
+    --text-white: white;
+    --primary: #EF57BF;
+    --secondary: #FBFF90;
+    --tertiary: #A1E9FF;
+    --fourth: #9D8DF6;
+    --container: color-mix(in srgb, #ffc7ff 15%, transparent 95%);
+}
+
+* {
+    font-family: 'Hind Madurai', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-flow: row wrap;
+    font-size: 14px;
+}
+
+section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-flow: row wrap;
+
+    &:last-child > div {
+        width: 90%;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-flow: column wrap;
+    gap: 2.5rem;
+
+    >h1 {
+        font-size: 1.5rem;
+        color: var(--secondary);
+    }
+
+    >form {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        flex-flow: column wrap;
+        gap: 2rem;
+
+        >div {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-flow: row wrap;
+            gap: 1rem;
+            flex: 1;
+
+            >input {
+                flex: 1;
+            }
+        }
+    }
+
+    > header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: row wrap;
+
+        > div {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-flow: column wrap;
+
+            > h2 {
+                color: var(--secondary);
+            }
+
+            /* > h3 {
+                color: var(--tertiary);
+            } */
+        }
+    }
+
+    > ul {
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        flex-flow: column;
+        list-style-type: none;
+        gap: 1rem;
+        max-height: 42vh;
+        overflow-y: auto;
+    }
+}
+
+.input {
+    border: none;
+    outline: none;
+    background-color: var(--container);
+    border-radius: 2rem;
+    padding: 0.8rem 1rem;
+    color: var(--text-white);
+    width: 16vw;
+    font-size: 0.9rem;
+
+    &::placeholder {
+        color: color-mix(in srgb, #ffdaff 40%, transparent 50%);
+    }
+}
+
+.button {
+    border: none;
+    outline: none;
+    background-color: var(--primary);
+    padding: 1rem;
+    border-radius: 4rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #C84EB8;
+    }
+}
+
+.card {
+    background-color: var(--container);
+    padding: 1rem;
+    border-radius: 2rem;
+}

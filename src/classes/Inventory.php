@@ -1,58 +1,58 @@
 <?php
 require_once('./src/classes/Product.php');
 
-class Inventario {
-    private $productos = [];
-    private $totalMonto = 0;
-    private $limiteMontoTotal = 50000;
-    private $limiteMontoIndividual = 3500;
+class Inventory {
+    private $products = [];
+    private $totalAmount = 0;
+    private $maxTotalAmount = 50000;
+    private $maxIndividualAmount = 3500;
 
     public function __construct() {
         // Verifica si existe una instancia previa de Inventario en la sesión y la carga
-        if (isset($_SESSION["inventario"])) {
-            $inventario = $_SESSION["inventario"];
-            $this->productos = $inventario->getProductos();
-            $this->totalMonto = $inventario->getTotalMonto();
+        if (isset($_SESSION["inventory"])) {
+            $inventory = $_SESSION["inventory"];
+            $this->products = $inventory->getProducts();
+            $this->totalAmount = $inventory->getTotalAmount();
         }
     }
 
-    public function agregarProducto($nombre, $monto) {
+    public function addProduct($name, $amount) {
         // Valida que el monto individual no sea mayor al límite
-        if ($monto <= $this->limiteMontoIndividual) {
+        if ($amount <= $this->maxIndividualAmount) {
             // Valida que el monto total no supere el límite
-            if (($this->totalMonto + $monto) <= $this->limiteMontoTotal) {
+            if (($this->totalAmount + $amount) <= $this->maxTotalAmount) {
                 // Agrega el producto al inventario
-                $producto = new Producto($nombre, $monto);
-                $this->productos[] = $producto;
+                $producto = new Product($name, $amount);
+                $this->products[] = $producto;
                 // Actualiza el total del monto
-                $this->totalMonto += $monto;
+                $this->totalAmount += $amount;
 
                 // Guarda la instancia actual de Inventario en la sesión
-                $_SESSION["inventario"] = $this;
+                $_SESSION["inventory"] = $this;
 
                 return true;
             } else {
-                return "El monto total de los productos no puede superar los {$this->limiteMontoTotal} Bs.";
+                return "El monto total de los productos no puede superar los {$this->maxTotalAmount} Bs.";
             }
         } else {
-            return "El monto individual de un producto no puede superar los {$this->limiteMontoIndividual} Bs.";
+            return "El monto individual de un producto no puede superar los {$this->maxIndividualAmount} Bs.";
         }
     }
 
-    public function getProductos() {
-        return $this->productos;
+    public function getProducts() {
+        return $this->products;
     }
 
-    public function getTotalMonto() {
-        return $this->totalMonto;
+    public function getTotalAmount() {
+        return $this->totalAmount;
     }
 
-    public function reiniciarInventario() {
-        $this->productos = [];
-        $this->totalMonto = 0;
+    public function restartInventory() {
+        $this->products = [];
+        $this->totalAmount = 0;
 
         // Borra la instancia de Inventario de la sesión
-        unset($_SESSION["inventario"]);
+        unset($_SESSION["inventory"]);
     }
 }
 ?>

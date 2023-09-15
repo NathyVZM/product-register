@@ -1,19 +1,17 @@
 <?php
-class Producto {
-    private $nombre;
-    private $monto;
+class Product {
+    public function __construct(
+        private $name,
+        private $amount
+    )
+    {}
 
-    public function __construct($nombre, $monto) {
-        $this->nombre = $nombre;
-        $this->monto = $monto;
+    public function getName() {
+        return $this->name;
     }
 
-    public function getNombre() {
-        return $this->nombre;
-    }
-
-    public function getMonto() {
-        return $this->monto;
+    public function getAmount() {
+        return $this->amount;
     }
 }
 ?>

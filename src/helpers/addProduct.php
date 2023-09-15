@@ -1,24 +1,24 @@
 <?php
 require_once('./src/classes/Inventory.php');
 
-$inventario = new Inventario();
+$inventory = new Inventory();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombreProducto = $_POST["nombre"];
-    $montoProducto = $_POST["monto"];
+    $productName = $_POST["name"];
+    $productAmount = $_POST["amount"];
 
-    $resultado = $inventario->agregarProducto($nombreProducto, $montoProducto);
+    $result = $inventory->addProduct($productName, $productAmount);
 
-    if ($resultado === true) {
+    if ($result === true) {
         header("Location: " . $_SERVER["PHP_SELF"]);
         exit;
     } else {
-        echo $resultado;
+        echo $result;
     }
 }
 
-if (isset($_GET['borrar'])) {
-    $inventario->reiniciarInventario();
+if (isset($_GET['delete'])) {
+    $inventory->restartInventory();
     header("Location: " . $_SERVER["PHP_SELF"]);
     exit;
 }
