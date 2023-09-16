@@ -5,8 +5,6 @@
     --text-white: white;
     --primary: #EF57BF;
     --secondary: #FBFF90;
-    --tertiary: #A1E9FF;
-    --fourth: #9D8DF6;
     --container: color-mix(in srgb, #ffc7ff 15%, transparent 95%);
 }
 
@@ -93,10 +91,6 @@ section {
             > h2 {
                 color: var(--secondary);
             }
-
-            /* > h3 {
-                color: var(--tertiary);
-            } */
         }
     }
 
@@ -146,6 +140,15 @@ section {
 
 .card {
     background-color: var(--container);
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-flow: column wrap;
+
+    > span:first-child {
+        font-size: 1rem;
+        font-weight: 500;
+    }
 }

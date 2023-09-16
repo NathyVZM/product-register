@@ -39,7 +39,10 @@ require_once('./src/helpers/addProduct.php');
             </header>
             <ul>
                 <?php foreach ($inventory->getProducts() as $product) { ?>
-                    <li class="card"><?php echo $product->getName(); ?> - <?php echo $product->getAmount(); ?> Bs.</li>
+                    <li class="card">
+                        <span><?php echo $product->getName(); ?></span>
+                        <span><?php echo $product->getAmount(); ?> Bs.</span>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
